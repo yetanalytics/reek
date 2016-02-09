@@ -64,3 +64,12 @@
                    (query/bin-index-query (bucket/bucket-named bucket-name)
                                           (name index-key)
                                           index-val))))
+
+(defn delete
+  [^reek.impl.client.ReekClient client
+   ^String bucket-name
+   ^String key-name]
+  (client/execute client
+                  (kv/delete-value (object/location
+                                    (bucket/bucket-named bucket-name)
+                                    key-name))))
