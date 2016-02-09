@@ -24,8 +24,8 @@
                    (kv/store-value
                     (object/location (bucket/bucket-named bucket-name) key-name)
                     (object/new-riak-object
-                     :content-type content-type
-                     :data value))))
+                     value
+                     content-type))))
   ([^reek.impl.client.ReekClient client
     ^String bucket-name
     ^String key-name
@@ -36,8 +36,8 @@
                    (kv/store-value
                     (object/location (bucket/bucket-named bucket-name) key-name)
                     (indexes/apply-indexes (object/new-riak-object
-                                            :content-type content-type
-                                            :data value) index-map)))))
+                                            value
+                                            content-type) index-map)))))
 
 (defn fetch
   [^reek.impl.client.ReekClient client

@@ -21,10 +21,10 @@
     (.setContentType content-type)))
 
 (defn new-riak-object ^RiakObject
-  [& {:keys [content-type data]}]
+  [data content-type]
   (doto (RiakObject.)
-    (cond-> content-type (set-content-type content-type))
-    (cond-> data (set-data data))))
+    (set-content-type content-type)
+    (set-data data)))
 
 (defn get-content-type ^String [^RiakObject riak-obj]
   (.getContentType riak-obj))
