@@ -1,17 +1,10 @@
 # reek
 
-A (very) simple wrapper around [riak](https://github.com/basho/riak-java-client) for binary key value storage.
+A (very) simple wrapper around [kria](https://github.com/bluemont/kria) for binary key value storage.
 
 ## Usage
 
-Reek exposes a small subset of Riak's functionality for the specific use case of reading and writing arbitrary binary data (with string keys), leveraging secondary indexes (2i). You must use the levelDB backend for it to work.
-
-## TODO
-*  Riak Exception handling/timeouts
-*  Clustering
-*  Deletion
-*  Tests!
-
+Reek exposes a small subset of Riak's functionality for the specific use case of synchronously reading and writing arbitrary binary data (with string keys), leveraging secondary indexes (2i). You must use the levelDB backend for it to work. Only binary secondary indexes are supported.
 
 ## License
 
