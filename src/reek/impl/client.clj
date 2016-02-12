@@ -28,10 +28,11 @@
     "Query a range of 2i indexes"))
 
 
-(defn default-conn-cb [asc e a]
-  (if e
-    (throw (Exception. "Connection operation failed"))
-    (prn a)))
+(defn conn-cb [p]
+  (fn [asc e a]
+    (if e
+      (throw (Exception. "Connection operation failed"))
+      (deliver p asc))))
 
 (defn result-cb [p]
   (fn [asc e a]
@@ -97,11 +98,12 @@
 
 (defrecord ReekClient [^String host
                        port
-                       ^AsynchronousSocketChannel conn
-                       conn-cb]
+                       ^AsynchronousSocketChannel conn]
   IReekClient
   (connect [this]
-    (assoc this :conn (client/connect host port (or conn-cb default-conn-cb))))
+    (let [result (promise)]
+      (client/connect host port (conn-cb result))
+      (assoc this :conn @result)))
 
   (shutdown [this]
     (if conn

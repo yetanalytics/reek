@@ -4,15 +4,10 @@
 
 (defn connect
   "instantiate a new Riak connection. Returns a connected ReekClient"
-  ([host port]
-   (client/connect
-    (client/map->ReekClient {:host host
-                             :port port})))
-  ([host port conn-cb]
-   (client/connect
-    (client/map->ReekClient {:host host
-                             :port port
-                             :conn-cb conn-cb}))))
+  [host port]
+  (client/connect
+   (client/map->ReekClient {:host host
+                            :port port})))
 
 (defn shutdown [client]
   (client/shutdown client))
