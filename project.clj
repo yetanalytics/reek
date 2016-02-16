@@ -1,4 +1,4 @@
-(defproject com.yetanalytics/reek "0.1.0"
+(defproject com.yetanalytics/reek "0.1.1-SNAPSHOT"
   :description "Simple Riak k/v library"
   :url "https://github.com/yetanalytics/reek"
   :license {:name "Eclipse Public License"
