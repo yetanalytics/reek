@@ -4,8 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.7.0"]
-                 [com.yetanalytics/kria "0.2.0-SNAPSHOT"]
-                 [prismatic/schema "1.0.5"]]
+                 [com.yetanalytics/kria "0.2.0-SNAPSHOT"]]
   :profiles
   {:dev {:source-paths ["dev"]
          :dependencies [[org.clojure/data.fressian "0.2.1"]
