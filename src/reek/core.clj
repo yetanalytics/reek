@@ -1,6 +1,7 @@
 (ns reek.core
   (:require [reek.impl.client :as client]))
 
+(set! *warn-on-reflection* true)
 
 (defn connect
   "instantiate a new Riak connection. Returns a connected ReekClient"
