@@ -1,5 +1,6 @@
 (ns reek.core
-  (:require [reek.impl.client :as client]))
+  (:require [reek.impl.client :as client]
+            [clojure.set :as cset]))
 
 (set! *warn-on-reflection* true)
 
@@ -69,6 +70,11 @@
                    bucket-name
                    index-key
                    index-val))
+
+(defn query-and [conn b multi-idx-map]
+  (apply cset/union
+         (for [[k v] multi-idx-map]
+           (query-eq conn b k v))))
 
 (defn query-range
   [^reek.impl.client.ReekClient client
