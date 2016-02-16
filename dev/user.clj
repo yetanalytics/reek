@@ -42,13 +42,17 @@
   (reek/delete conn "test-bucket" "another-string-with-an-index")
   (reek/delete conn "test-bucket" "a-third-string-with-a-different-index")
 
-  (store-fress conn "test-bucket" "a-fressian-value" {:some {:fressian ["stuff"]}} {})
-  (fetch-fress conn "test-bucket" "a-fressian-value")
+  (time
+   (do
+     (store-fress conn "test-bucket" "a-fressian-value" {:some {:fressian ["stuff"]}} {})
+     (fetch-fress conn "test-bucket" "a-fressian-value")))
 
   (reek/delete conn "test-bucket" "a-fressian-value")
 
-  (store-nippy conn "test-bucket" "a-nippy-value" {:some {:nippy ["stuff"]}} {})
-  (fetch-nippy conn "test-bucket" "a-nippy-value")
+  (time
+   (do
+    (store-nippy conn "test-bucket" "a-nippy-value" {:some {:nippy ["stuff"]}} {})
+    (fetch-nippy conn "test-bucket" "a-nippy-value")))
 
   (reek/delete conn "test-bucket" "a-nippy-value")
 
